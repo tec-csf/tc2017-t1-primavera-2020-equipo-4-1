@@ -1,0 +1,12 @@
+language: cpp
+
+cpp:
+- c++17
+
+before_script:
+- composer install --no interaction
+
+script:
+- sources/LeerArchivo
+
+
