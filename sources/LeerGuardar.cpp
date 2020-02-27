@@ -38,6 +38,7 @@ int main(int argc, char * argv[])
        T++;
     }//Close while 
 
+    //Printing
     for (int s = 0; s < i; s++){
         cout << list[s] << endl;
     }//Close for 
