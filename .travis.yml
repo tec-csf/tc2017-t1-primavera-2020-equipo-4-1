@@ -2,5 +2,5 @@ language: cpp
 
 compiler: gcc
 
-
+./configure && make && make test
 
