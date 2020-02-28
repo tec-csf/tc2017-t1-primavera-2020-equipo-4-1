@@ -1,8 +1,11 @@
 language: cpp
-dist: xenial
+
 compiler: gcc
 
-script: 
-  - qmake
-  - make
-  - ./travis_qmake_gcc_cpp11
+script:
+- g++ LeerArchivo.cpp
+-./LeerArchivo example1.txt 
+before_install:
+  - sudo apt-get -y install libxml2-dev
+
+
