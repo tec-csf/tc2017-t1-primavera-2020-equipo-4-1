@@ -3,7 +3,7 @@ language: cpp
 compiler: gcc
 
 script:
-- ls
+- cd sources/
 - g++ LeerArchivo.cpp -o LeerArchivo
 - ./LeerArchivo example1.txt 
 before_install:
