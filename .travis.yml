@@ -4,7 +4,7 @@ compiler: gcc
 
 script:
 - g++ LeerArchivo.cpp
--./LeerArchivo example1.txt 
+- ./LeerArchivo example1.txt 
 before_install:
   - sudo apt-get -y install libxml2-dev
 
