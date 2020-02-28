@@ -1,7 +1,6 @@
 language: cpp
 
-cpp:
-- c++17
+compiler: gcc
 
 before_script:
 - composer install --no interaction
