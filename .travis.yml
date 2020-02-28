@@ -2,4 +2,7 @@ language: cpp
 
 compiler: gcc
 
+before_install:
+  - sudo apt-get -y install libxml2-dev
+
 ./configure && make && make test
