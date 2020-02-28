@@ -3,7 +3,7 @@ language: cpp
 compiler: gcc
 
 script:
-- g++ LeerArchivo.cpp
+- g++ /Loga/tc2017-t1-primavera-2020-equipo-4-1/sources/LeerArchivo.cpp -o LeerArchivo
 - ./LeerArchivo example1.txt 
 before_install:
   - sudo apt-get -y install libxml2-dev
