@@ -15,6 +15,7 @@ class LeerArchivo{
     public:
         int i = 0;
         int a = 0;
+        int s = 0;
         
         //Input of the file for reading
         void leerGuardar(T argv1[], T argv2[]){
@@ -56,7 +57,7 @@ class LeerArchivo{
                       file.close();
                       
                     }else{
-                      cout<<"no funciona"<<endl;
+                      cout<<"no introduciste la ruta correctamente"<<endl;
                     }
         }//Close leerGuardar
 };//Close leerArchivo

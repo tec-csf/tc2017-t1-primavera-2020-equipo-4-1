@@ -13,7 +13,7 @@ class Complejidad{
     int i = 0;
     int a = 0;
     int s = 0;
-    stringstream ss;
+  
     //Method to check if the array has a declaration
     void declaracion(T argv[]){
          //Input of the file for reading
@@ -57,18 +57,19 @@ class Complejidad{
           string match;
           
           //Objects for regex
-          regex str("string.+[a-zA-Z] =");
-          regex integer("int.+[a-zA-Z] =");
-          regex flt("float+.+[a-zA-Z] =");
-          regex dbl("double+.+[a-zA-Z] =");
-          regex bol("bool+.+[a-zA-Z] =");
+          regex str("[^for]string.+[a-zA-Z] =");
+          regex integer("[^for]int.+[a-zA-Z] =");
+          regex flt("[^for]float+.+[a-zA-Z] =");
+          regex dbl("[^for]double+.+[a-zA-Z] =");
+          regex bol("[^for]bool+.+[a-zA-Z] =");
 
           regex_search (list[j],s,integer);
           for(auto x:s){
             match = x;
             }
+          
           //Comparing the regex objects with each line
-          if( regex_match(match,str)||regex_match(match,integer)||regex_match(match,flt)||regex_match(match,dbl)||regex_match(match,bol) ){
+          if(regex_match(match,str)||regex_match(match,integer)||regex_match(match,flt)||regex_match(match,dbl)||regex_match(match,bol) ){
             //If it matches, it overwrites with an EO (elemental operation)
             list[j] = "1";
           }else{
