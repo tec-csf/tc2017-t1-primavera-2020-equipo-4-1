@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "iosfwd": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "ostream": "cpp"
   }
 }
