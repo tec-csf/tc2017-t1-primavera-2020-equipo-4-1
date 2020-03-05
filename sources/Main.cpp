@@ -1,7 +1,6 @@
 /* 
 C++ implementation to read from a file line by line
 and save the lines in an array.
-Probando a ver sí ya sirve mi git!
 */
 #include <vector>
 #include <sstream>
