@@ -2,6 +2,7 @@
 C++ implementation to read from a file line by line
 and save the lines in an array.
 */
+
 #include <vector>
 #include <sstream>
 #include <iostream>
