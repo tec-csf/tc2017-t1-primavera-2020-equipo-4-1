@@ -12,60 +12,41 @@ using namespace std;
 template <class T> 
 class Metodos{  
   public:
-      
-      string separate(string str) 
-            { 
-              string word = ""; 
-              for (auto x : str) 
-              { 
-                  if (x == ' ') 
-                  {
-                      word = ""; 
-                  } 
-                  else
-                  { 
-                      word = word + x; 
-                  } 
-                  return word; 
-              }  
-              return word; 
-            } 
-  
 
     int declaracion(T *arr){
-          int n = sizeof(arr);
-          int contador = 0;
-          
-          //GUERO ARREGLA ESTO
-          for(int k = 0; k < n+1 ; k++){
-               cout<<separate(arr[0])<<endl;
-            }/*
-                for(int i = 0; i < splittedStrings.size() ; i++)
-                    { 
-                        // displaying content
-                        if(word.length()>1)
-                        {
-                            for(int i = 0; word.length()>i;i++)
+        int contador = 0;
+        string line;
+        int n = sizeof(arr);
+            for (int i = 0; i < n; i++)
+            {
+                line = arr[i];
+                    stringstream file(line); 
+                    string word;
+                    while (file >> word){ 
+                    // displaying content
+                            if(word.length()>1)
                             {
-                                if(word[i] == '+' && word[i+1] == '+')
+                                int l = 0;
+                                for(int j = 0; word.length()>j;j++)
                                 {
-                                    contador++;
+                                    if(word[j] == '+' && word[j+1] == '+')
+                                    {
+                                        contador++;
+                                    }
                                 }
                             }
-                        }
-                        else if (word == "=" || word == "<" || word == "+")
-                        {
+                            else if (word == "=" || word == "<" || word == "+")
+                            {
 
-                            contador++;
-                        }
-                        cout << word << endl;
-                    } 
-                    cout<<"OE: "<<contador;
-                  }  
-                  return contador;
-          */
-         }
-
+                                contador++;
+                            }
+                            cout << word << endl;
+                        } 
+                        cout<<"OE: "<<contador;
+                        
+                        } 
+                }         
+                
 };
 
 //Creating a template class
