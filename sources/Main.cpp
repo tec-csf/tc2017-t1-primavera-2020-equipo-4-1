@@ -3,7 +3,6 @@ C++ implementation to read from a file line by line
 and save the lines in an array.
 */
 
-#include <vector>
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -20,7 +19,7 @@ class Metodos{
         int n = sizeof(arr);
             for (int i = 0; i < n; i++)
             {
-                line = arr[i];
+                    line = arr[i];
                     stringstream file(line); 
                     string word;
                     while (file >> word){ 
@@ -36,7 +35,7 @@ class Metodos{
                                     }
                                 }
                             }
-                            else if (word == "=" || word == "<" || word == "+")
+                            else if (word == "=" || word == "<" || word == "+"|| word == ">" || word == "-"|| word == "*"|| word == "[")
                             {
 
                                 contador++;
@@ -45,9 +44,10 @@ class Metodos{
                         } 
                         cout<<"OE: "<<contador;
                         
-                        } 
-                }         
-                
+                       } 
+                }
+
+                   
 };
 
 //Creating a template class
