@@ -13,9 +13,9 @@ using namespace std;
 template <class T> 
 class Metodos{  
   public:
-
-    int declaracion(T *arr){
+    string* declaracion(T *arr){
         int contador = 0;
+        string list_EO[sizeof(arr)];
         string line;
         int n = sizeof(arr);
             for (int i = 0; i < n; i++)
@@ -32,20 +32,32 @@ class Metodos{
                                 {
                                     if(word[j] == '+' && word[j+1] == '+')
                                     {
+                                        list_EO[i]="contiene #EO "+to_string(contador);
+                                        
                                         contador++;
                                     }
                                 }
                             }
                             else if (word == "=" || word == "<" || word == "+")
                             {
-
+                                list_EO[i]="contiene #EO "+to_string(contador);
+                                
                                 contador++;
                             }
-                            cout << word << endl;
+                           // cout << word << endl;
                         } 
-                        cout<<"OE: "<<contador;
+                        //cout<<"OE: "<<contador;
                         
-                        } 
+                        }
+                        for (int i = 0; i < sizeof(list_EO) ; i++)
+                        {
+                            if (list_EO[i]!="")
+                            {
+                                cout<<list_EO[i]<<endl;
+                            }
+                        }
+                        //returning list of elemental opertions
+                        return list_EO;
                 }         
                 
 };
@@ -57,7 +69,7 @@ class LeerArchivo{
         int i = 0;
         int a = 0;
         int s = 0;
-        string *list;
+        string* list;
         
         //Input of the file for reading
         string * leerGuardar(T argv1[], T argv2[]){
@@ -92,7 +104,7 @@ class LeerArchivo{
 
                       //Printing
                       for (int s = 0; s < i; s++){
-                          cout << list[s] << endl;
+                          //cout << list[s] << endl;
                       }//Close for 
                       
                       //returning list of strings
