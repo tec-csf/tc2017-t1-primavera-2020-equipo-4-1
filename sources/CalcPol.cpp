@@ -5,6 +5,32 @@
 #include <string>
 using namespace std; 
 
+/*ADAPTAR ESTE ALGORITMO AL MAIN E INCLUIR 
+LA CONDICION DE QUE SI EL FOR TERMINA EN N-1
+HACER QUE SEPARE EL MENOS UNO, COVERTIRLO EN
+INT Y PONERLO EN LA SUMA DE TERMINA - INICIA +1
+
+TAMBIEN ADAPTAR ESTO PARA QUE SE USE EN EL MAIN
+
+DESPUES DE LOGRARLO, VER QUE IMPRIMA LA TABLA COMPLETA
+
+DESPUES, USAR EL ARCHIVO DE POLYNOMIAL PARA PODER SUMAR LOS POLINOMIOS.
+
+EL ARCHIVO FUNCIONA ASI:
+a.set(1,1) va a ser igual a 1n^1 osea "n"
+a.set(1,0) va a ser igual a 1n^0 osea "1"
+
+LES DEJO LA PAGINA DE DONDE LA SAQUE PARA QUE VEAN COMO SE SUMA Y MULTIPLICA
+
+https://www.daniweb.com/programming/software-development/code/217091/simple-polynomial-class
+
+APROVECHEN QUE YA SE ORGANIZA SOLO PARA PONER EL EXPONENTE MAS ALTO AL PRINCIPIO
+
+
+
+*/
+
+
 
 void calc(string arr[2]){
         string str2;
@@ -23,7 +49,7 @@ void calc(string arr[2]){
                     stringstream file(line); 
                     string word;
                     while (file >> word){ 
-                      cout<<word<<endl;
+
                     // Finds the line with the for
                     if(word == "for"){
                       //puts a position to the beggining and end of the for
@@ -31,7 +57,7 @@ void calc(string arr[2]){
                       posTer = posIni + 7;
                       sw = true;
                     }else{
-                      cout<<"no jalo"<<endl;
+
                     }
                   }
                   if(sw == true){
@@ -54,21 +80,12 @@ void calc(string arr[2]){
                         cout<<total<<endl;
                       }
 
-                  
-
                   }
                
 
             }
         
 }
-
-  
-   
-
-             
-
-
 
 int main()
 {
