@@ -26,9 +26,6 @@ LES DEJO LA PAGINA DE DONDE LA SAQUE PARA QUE VEAN COMO SE SUMA Y MULTIPLICA
 https://www.daniweb.com/programming/software-development/code/217091/simple-polynomial-class
 
 APROVECHEN QUE YA SE ORGANIZA SOLO PARA PONER EL EXPONENTE MAS ALTO AL PRINCIPIO
-
-
-
 */
 
 // Function to remove all spaces from a given string 
@@ -38,27 +35,26 @@ string removeSpaces(string str)
     return str; 
 }  
 
-void calc(string arr[2]){
+void calc(string arr[3]){
   string str2;
   string str1;
   string str3;
-  string signo;
+  string str4;
+  string total2;
+  string line;
   int str3Int;
   int posIni;
   int posTer;
   int numIni;
-  int numTer;
   int suma;
-  string line;
-  int n = 2;
+  int n = 3;
   bool sw = false;
   bool sumaResta = false;
 
-  cout<<n<<endl;
+  //cout<<n<<endl;
   for (int i = 0; i < n; i++)
   {
     line = arr[i];
-    cout<<line<<endl;
     stringstream file(line); 
     string word;
     while (file >> word){ 
@@ -79,49 +75,57 @@ void calc(string arr[2]){
         }
 
         sw = true;
-      }
 
-      if(sw == true){
-        //We got the substring via the positions (0 and N)
-        str2 = line.substr(posIni,1); 
-        str1 = line.substr(posTer,1);
-        cout<<str2<<endl;
-        cout<<str1<<endl;
+        if(sw == true){
+          //We got the substring via the positions (0 and N)
+          str2 = line.substr(posIni,1); 
+          str1 = line.substr(posTer,1);
+          //cout<<str2<<endl;
+          //cout<<str1<<endl;
 
-        numIni = stoi(str2); //stoi() converts from string to int
+          numIni = stoi(str2); //stoi() converts from string to int
 
-        if (sumaResta == true){
-          str3Int = stoi(str3);
-          suma = (- numIni + str3Int + 1);
-        }
+          if (sumaResta == true){
+            str3Int = stoi(str3);
+            suma = (- numIni + str3Int + 1);
+          }
 
-        else {
-          suma = (- numIni + 1); //This determines how much the for will repeat
-        }
-                
-        // the conditions were made for the sign in the string
-        if(suma>=0){
-        string total = str1 + "+" + to_string(suma);
+          else {
+            suma = (- numIni + 1); //This determines how much the for will repeat
+          }
+                  
+          // the conditions were made for the sign in the string
+          if(suma>=0){
+          string total = str1 + "+" + to_string(suma);
 
-        cout<<total<<endl;
-        }else{
-          string total = str1 + "" + to_string(suma);
           cout<<total<<endl;
-        }
+          }else{
+            string total = str1 + "" + to_string(suma);
+            cout<<total<<endl;
+          }
 
-        sw = false;
-        sumaResta = false;
+          sw = false;
+          sumaResta = false;
+        }
       }
+
+      if (word == "while"){
+        str4 = arr[i].at(11);
+
+        total2 = str4 + "+" + to_string(1);
+        cout<<total2<<endl;
+      }     
     }
   }      
 }
 
 int main()
 {
-  string linea1 = "for (int i = 0; i < n; i++){"; 
+  string linea1 = "for (int i = 1; i < n + 3; i++){";
   string linea2 = "int a = 0;";
+  string linea3 = "while (i < n);";
 
-  string arr[2] = {linea1, linea2};
+  string arr[3] = {linea1, linea2, linea3};
 
   calc(arr);
 

@@ -8,6 +8,7 @@ and save the lines in an array.
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using namespace std; 
 
 template <class T> 
@@ -15,51 +16,70 @@ class Metodos{
   public:
     string* declaracion(T *arr){
         int contador = 0;
-        string list_EO[sizeof(arr)];
-        string line;
         int n = sizeof(arr);
-            for (int i = 0; i < n; i++)
-            {
-                line = arr[i];
-                    stringstream file(line); 
-                    string word;
-                    while (file >> word){ 
-                    // displaying content
-                            if(word.length()>1)
-                            {
-                                int l = 0;
-                                for(int j = 0; word.length()>j;j++)
-                                {
-                                    if(word[j] == '+' && word[j+1] == '+')
-                                    {
-                                        list_EO[i]="contiene #EO "+to_string(contador);
-                                        
-                                        contador++;
-                                    }
-                                }
-                            }
-                            else if (word == "=" || word == "<" || word == "+")
-                            {
-                                list_EO[i]="contiene #EO "+to_string(contador);
-                                
-                                contador++;
-                            }
-                           // cout << word << endl;
-                        } 
-                        //cout<<"OE: "<<contador;
-                        
-                        }
-                        for (int i = 0; i < sizeof(list_EO) ; i++)
+        string OE[n];
+        string line;
+
+        for (int i = 0; i < n; i++)
+        {
+            line = arr[i];
+            stringstream file(line); 
+            string word;
+
+            while (file >> word){ 
+                //cout << word << endl;
+                // displaying content
+                if(word.length()>1)
+                {
+                    int l = 0;
+                    for(int j = 0; word.length()>j;j++)
+                    {
+                        if((word[j] == '+' && word[j+1] == '+') || (word[j] == '[') || (word[j] == '-' && word[j+1] == '-') || (word[j] == '>' && word[j+1] == '=') || (word[j] == '<' && word[j+1] == '='))
                         {
-                            if (list_EO[i]!="")
-                            {
-                                cout<<list_EO[i]<<endl;
-                            }
+                            //cout << "aqui" << endl;
+
+                            contador++;
+
+                            list_EO[i]="contiene #EO "+to_string(contador);
                         }
-                        //returning list of elemental opertions
-                        return list_EO;
-                }         
-                
+
+                        if((word[j] == '+' && word[j+1] == '=') || (word[j] == '-' && word[j+1] == '='))
+                        {
+                            //cout << "aqui" << endl;
+
+                            contador = contador + 2;
+
+                            list_EO[i]="contiene #EO "+to_string(contador);
+                        }
+                    }
+                }
+
+                else if (word == "=" || word == "<" || word == ">" || word == "+" || word == "*" || word == "/" || word == "-")
+                {
+                    //cout << "aqui" << endl;
+
+                    contador++;
+
+                    list_EO[i]="contiene #EO "+to_string(contador);
+                }
+            } 
+
+            //cout << word << endl;
+
+            contador = 0;               
+        }
+
+        for (int i = 0; i < sizeof(list_EO) ; i++)
+        {
+            if ((list_EO[i] != " ") || (list_EO[i] != " "))
+            {
+                cout<<list_EO[i]<<endl;
+            }
+        }
+
+        //returning list of elemental opertions
+        //return list_EO;
+    }                   
 };
 
 //Creating a template class

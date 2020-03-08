@@ -6,7 +6,7 @@ int main ()
   int a = 5;
   int b = 2;
   a = a + 1;
-  for int result = a - b;
+  int result = a - b;
 
   // print out the result:
   cout << result;
