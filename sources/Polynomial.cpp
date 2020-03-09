@@ -35,6 +35,15 @@ public:
          coef[i] = 0;
       }
    }
+
+   Polynomial(int a, int b) //default constructor
+   {
+      for ( int i = 0; i < 100; i++ )
+      {
+         coef[i] = 0;
+      }
+      this->set(a,b);
+   }
    void set ( int a , int b ) //setter function
    {
       //coef = new Polynomial[b+1];
@@ -110,14 +119,15 @@ public:
 int main()
 {
    Polynomial a, b, c, d, e, f, g,l,m;
-   a.set ( 1, 1); //1x^0
-   a.set ( -1, 0 ); //1x^0
-   b.set ( 10, 0 ); //1x^0
-   c.set ( 2, 0 ); //1x^1
-   d.set ( 3, 0 ); //1x^1
-   g.set ( 2, 0 ); //1x^1
+   Polynomial v(1,1);
+   a.set(1,0);
 
-   m = a.times(b);
+   b.set(1,0);
+
+   c.set(1,1);
+   c.set(1,0);
+
+   m = v;
    m.print();
    
 }
