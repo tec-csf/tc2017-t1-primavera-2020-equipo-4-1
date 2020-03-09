@@ -318,7 +318,7 @@ class Conversion{
             int coef = 0;
             int exp = 0;
             char a = '0';
-            for (int i = 1; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 string line = pol[i];
                 stringstream file(line);
@@ -326,6 +326,7 @@ class Conversion{
 
                 while(file >> word){
                     if(word.length() == 1 && word !="+"){
+                        cout<<"funciona"<<endl;
                         int num = stoi(word);
                         coef = coef + num;
                         exp = 0;   
