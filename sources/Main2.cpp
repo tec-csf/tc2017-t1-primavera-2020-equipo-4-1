@@ -290,6 +290,7 @@ int main(int argc, char * argv[])
     string *arr = L.leerGuardar(argv[1], argv[argc-1]);
     i = sizeof(arr);
 
+    cout << arr[7] << endl;
     cout << "El tamaño desde el main es: " << i << endl;
 
     M.declaracion(arr, i);
