@@ -235,6 +235,7 @@ class LeerArchivo{
         
         //Input of the file for reading
         string * leerGuardar(T argv1[], T argv2[]){
+            a=0;
             if (*argv1 == '-'){
                 string path = argv2;
                 string str;
@@ -253,7 +254,7 @@ class LeerArchivo{
                 //Opening the file again
                 file.open(path, ios::in);
                     
-                list = new string[i];
+                list = new string[i]();
 
                 //Saving the text file line by line in an array
                 while (getline(file, str)){
@@ -288,11 +289,7 @@ int main(int argc, char * argv[])
     Metodos<string> M;
 
     string *arr = L.leerGuardar(argv[1], argv[argc-1]);
-    i = sizeof(arr);
-
-    cout << arr[7] << endl;
-    cout << "El tamaño desde el main es: " << i << endl;
-
+    i = L.i;
     M.declaracion(arr, i);
 
     return 0; 
