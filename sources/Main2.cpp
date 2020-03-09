@@ -35,65 +35,13 @@ using namespace std;
 template <class T> 
 class Metodos{  
   public:
-    string* declaracion(T *arr){
-        int n = sizeof(arr)/sizeof(arr[0]);
-        int contador = 0;
-        string OE[n];
-        string line;
-        string word;
-        string pol;
-        bool thereIsPol = false;
-
-        for (int i = 0; i < n; i++){
-            line = arr[i];
-            stringstream file(line);
-
-            while (file >> word){
-                if (word.length() > 1){
-                    if (word == "for"){
-                        pol = calcFor(line);
-                        thereIsPol = true;
-                    }//Close if 
-
-                    for (int j = 0; j < word.length(); j++){
-                        if ((word[j] == '+' && word[j + 1] == '+') || (word[j] == '[') || 
-                        (word[j] == '-' && word[j + 1] == '-') || (word[j] == '>' && word[j + 1] == '=') 
-                        || (word[j] == '<' && word[j + 1] == '=')){ 
-                            contador++;
-                            OE[i] = to_string(contador) + "+ ";
-                        }//Close if 
-
-                        if((word[j] == '+' && word[j + 1] == '=') || (word[j] == '-' && word[j + 1] == '=')){
-                            contador = contador + 2;
-
-                            OE[i]="contiene #EO "+to_string(contador);
-                        }//Close if 
-                    }//Close for          
-                }//Close if
-
-                else if (word == "=" || word == "<" || word == ">" || word == "+" || word == "*" || 
-                word == "/" || word == "-"){
-                    if ((word == "<" || word == ">") && (thereIsPol = true)){
-                        contador++;
-                        OE[i] = 
-                    }
-
-                    contador++;
-                    list_EO[i]="contiene #EO "+to_string(contador);
-                }//Close else if 
-            }//Close while
-
-            contador = 0; 
-        }//Close for 
-    }//Close declaracion
-
     //Function to remove all spaces from a given string 
     string removeSpaces(T str){ 
         str.erase(remove(str.begin(), str.end(), ' '), str.end()); 
         return str; 
     }//Close removeSpaces
 
-    string calcFor(T line){
+    string calcFor(T line, bool increment){
         string str1;
         string str2;
         string str3;
@@ -126,31 +74,44 @@ class Metodos{
 
             sw = true;
 
-            if(sw == true){
+            if (sw == true){
                 //We got the substring via the positions (0 and N)
                 str2 = line.substr(posIni, 1); 
                 str1 = line.substr(posTer, 1);
 
                 numIni = stoi(str2); //stoi() converts from string to int
 
-                if (sumaResta == true){
-                    str3Int = stoi(str3);
-                    suma = (- numIni + str3Int + 1);
-                }//Close if 
+                if (increment = true){
+                    if (sumaResta == true){
+                        str3Int = stoi(str3);
+                        suma = (- numIni + str3Int);
+                    }//Close if 
+
+                    else {
+                        suma = (- numIni); //This determines how much the for will repeat
+                    }//Close else
+                }//Close if
 
                 else {
-                    suma = (- numIni + 1); //This determines how much the for will repeat
+                    if (sumaResta == true){
+                        str3Int = stoi(str3);
+                        suma = (- numIni + str3Int + 1);
+                    }//Close if 
+
+                    else {
+                        suma = (- numIni + 1); //This determines how much the for will repeat
+                    }//Close else
                 }//Close else 
                         
                 // the conditions were made for the sign in the string
                 if(suma >= 0){
                     total = str1 + "+" + to_string(suma);
-                    cout << total << endl;
+                    //cout << total << endl;
                 }//Close if 
                 
                 else {
                     total = str1 + "" + to_string(suma);
-                    cout << total << endl;
+                    //cout << total << endl;
                 }//Close else 
 
                 sw = false;
@@ -159,8 +120,87 @@ class Metodos{
         }//Close while
 
         return total;
-    }//Close calc               
-};
+    }//Close calcFor
+
+    string* declaracion(T *arr){ 
+        int n = sizeof(arr);
+        int contador = 0;
+        string OE[n];
+        string line;
+        string word;
+        string pol;
+        string pol2;
+        bool thereIsPol = false;
+        bool increment = false;
+
+        for (int i = 0; i < n; i++){
+            line = arr[i];
+            stringstream file(line);
+
+            while (file >> word){
+                if (word.length() > 1){
+                    if (word == "for"){ //Falta agregar condicion que solo deje que se haga una vez por line
+                        increment = false;
+                        pol = calcFor(line, increment);
+                        thereIsPol = true; 
+                    }//Close if
+
+                    if ((word == "++" || word == "--") && thereIsPol == true){
+                        increment = true;
+                        pol2 = calcFor(line, increment);
+                    }//Close if 
+
+                    for (int j = 0; j < word.length(); j++){
+                        if ((word[j] == '+' && word[j + 1] == '+') || (word[j] == '[') || 
+                        (word[j] == '-' && word[j + 1] == '-') || (word[j] == '>' && word[j + 1] == '=') 
+                        || (word[j] == '<' && word[j + 1] == '=')){
+                            if (((word[j] == '+' && word[j + 1] == '+') || (word[j] == '-' && word[j + 1] == '-')) 
+                            && (thereIsPol = true)){
+                                contador++;
+                                OE[i] = OE[i] + to_string(contador) + "(" + pol2 + ") + (" + pol2 + ")[";
+                                contador = 0;
+                            }//Close if
+
+                            else {
+                                contador++;
+                                OE[i] = OE[i] + to_string(contador) + " + ";
+                                contador = 0;
+                            }//Close else 
+                        }//Close if 
+
+                        if ((word[j] == '+' && word[j + 1] == '=') || (word[j] == '-' && word[j + 1] == '=')){
+                            contador = contador + 2;
+                            OE[i] = OE[i] + to_string(contador) + " + ";
+                        }//Close if
+                    }//Close for          
+                }//Close if
+
+                else if (word == "=" || word == "<" || word == ">" || word == "+" || word == "*" || 
+                word == "/" || word == "-"){
+                    if ((word == "<" || word == ">") && (thereIsPol = true)){
+                        contador++;
+                        OE[i] = OE[i] + to_string(contador) + "(" + pol + ") + ";
+                    }//Close if
+
+                    else {
+                        contador++;
+                        OE[i] =  OE[i] + to_string(contador) + " + ";
+                    }//Close else 
+                }//Close else if
+
+                contador = 0;
+            }//Close while
+
+            contador = 0;
+            thereIsPol = false;
+            increment = false;
+        }//Close for
+
+        for (int k = 0; k < n; k++){
+            cout << OE[k] << endl;
+        }//Close for 
+    }//Close declaracion               
+};//Close Metodos
 
 //Creating a template class
 template <class T> 
@@ -173,51 +213,49 @@ class LeerArchivo{
         
         //Input of the file for reading
         string * leerGuardar(T argv1[], T argv2[]){
-            if (*argv1 == '-')
-                    {
-                      string path = argv2;
-                      string str;
-                      //Declaring an ifstream file and opening our file
-                      ifstream file;
-                      file.open(path, ios::in);             
+            if (*argv1 == '-'){
+                string path = argv2;
+                string str;
+                //Declaring an ifstream file and opening our file
+                ifstream file;
+                file.open(path, ios::in);             
 
-                      //Reading from the file line by line 
-                      while (getline(file, str))
-                      {
-                          i++;
-                      }//Close while
+                //Reading from the file line by line 
+                while (getline(file, str)){
+                    i++;
+                }//Close while
 
-                      //Closing the file
-                      file.close();
+                //Closing the file
+                file.close();
 
-                      //Opening the file again
-                      file.open(path, ios::in);
-                          
-                      list= new string[i];
+                //Opening the file again
+                file.open(path, ios::in);
+                    
+                list= new string[i];
 
-                      //Saving the text file line by line in an array
-                      while (getline(file, str))
-                      {
-                          list[a] = str; 
-                          a++;
-                      }//Close while 
+                //Saving the text file line by line in an array
+                while (getline(file, str)){
+                    list[a] = str; 
+                    a++;
+                }//Close while 
 
-                      //Printing
-                      for (int s = 0; s < i; s++){
-                          //cout << list[s] << endl;
-                      }//Close for 
-                      
-                      //returning list of strings
-                      return list;
+                //Printing
+                /*for (int s = 0; s < i; s++){
+                    cout << list[s] << endl;
+                }//Close for*/
+                
+                //returning list of strings
+                return list;
 
-                      
-                      //Closing the file again
-                      file.close();
-                      
-                    }else{
-                      cout<<"no introduciste la ruta correctamente"<<endl;
-                    }
-                    return list;
+                //Closing the file again
+                file.close();
+            }//Close if 
+                    
+            else{
+                cout<<"no introduciste la ruta correctamente"<<endl;
+            }//Close else 
+
+            return list;
         }//Close leerGuardar    
 };//Close leerArchivo
 
