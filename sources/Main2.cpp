@@ -2,14 +2,7 @@
 C++ implementation to read from a file line by line
 and save the lines in an array.
 
-ADAPTAR ESTE ALGORITMO AL MAIN E INCLUIR 
-LA CONDICION DE QUE SI EL FOR TERMINA EN N-1
-HACER QUE SEPARE EL MENOS UNO, COVERTIRLO EN
-INT Y PONERLO EN LA SUMA DE TERMINA - INICIA +1
-
 TAMBIEN ADAPTAR ESTO PARA QUE SE USE EN EL MAIN
-
-DESPUES DE LOGRARLO, VER QUE IMPRIMA LA TABLA COMPLETA
 
 DESPUES, USAR EL ARCHIVO DE POLYNOMIAL PARA PODER SUMAR LOS POLINOMIOS.
 
@@ -81,7 +74,7 @@ class Metodos{
 
                 numIni = stoi(str2); //stoi() converts from string to int
 
-                if (increment = true){
+                if (increment == true){
                     if (sumaResta == true){
                         str3Int = stoi(str3);
                         suma = (- numIni + str3Int);
@@ -122,16 +115,30 @@ class Metodos{
         return total;
     }//Close calcFor
 
-    string* declaracion(T *arr){ 
-        int n = sizeof(arr);
+    string calcWhile(T line){
+        string str1;
+        string str2;
+        string total;
+
+        str1 = line.at(11);
+        total = str1 + " + " + to_string(1);
+
+        return total;
+    }//Close calcWhile
+
+    string* declaracion(T *arr, int n){ 
         int contador = 0;
         string OE[n];
         string line;
         string word;
         string pol;
         string pol2;
+        string pol3;
         bool thereIsPol = false;
+        bool thereIsPol2 = false;
         bool increment = false;
+
+        cout << n << endl;
 
         for (int i = 0; i < n; i++){
             line = arr[i];
@@ -139,23 +146,30 @@ class Metodos{
 
             while (file >> word){
                 if (word.length() > 1){
-                    if (word == "for"){ //Falta agregar condicion que solo deje que se haga una vez por line
+                    if (word == "for"){
                         increment = false;
                         pol = calcFor(line, increment);
                         thereIsPol = true; 
                     }//Close if
 
-                    if ((word == "++" || word == "--") && thereIsPol == true){
+                    else if ((word == "i++){" || word == "i--){" || word == "j++){" || word == "j--){" || word == "k++){" 
+                    || word == "k--){") && thereIsPol == true){
                         increment = true;
                         pol2 = calcFor(line, increment);
-                    }//Close if 
+                    }//Close else if 
+
+                    else if (word == "while"){
+                        pol3 = calcWhile(line);
+                        thereIsPol2 = true;
+                        cout << pol3 << endl;
+                    }//Close else if 
 
                     for (int j = 0; j < word.length(); j++){
                         if ((word[j] == '+' && word[j + 1] == '+') || (word[j] == '[') || 
                         (word[j] == '-' && word[j + 1] == '-') || (word[j] == '>' && word[j + 1] == '=') 
                         || (word[j] == '<' && word[j + 1] == '=')){
                             if (((word[j] == '+' && word[j + 1] == '+') || (word[j] == '-' && word[j + 1] == '-')) 
-                            && (thereIsPol = true)){
+                            && (thereIsPol == true)){
                                 contador++;
                                 OE[i] = OE[i] + to_string(contador) + "(" + pol2 + ") + (" + pol2 + ")[";
                                 contador = 0;
@@ -177,23 +191,31 @@ class Metodos{
 
                 else if (word == "=" || word == "<" || word == ">" || word == "+" || word == "*" || 
                 word == "/" || word == "-"){
-                    if ((word == "<" || word == ">") && (thereIsPol = true)){
+                    if ((word == "<" || word == ">") && (thereIsPol == true)){
                         contador++;
                         OE[i] = OE[i] + to_string(contador) + "(" + pol + ") + ";
                     }//Close if
 
+                    else if ((word == "<" || word == ">") && (thereIsPol2 == true)){
+                        contador++;
+                        OE[i] = OE[i] + to_string(contador) + "(" + pol3 + ") + ";
+                        //cout << OE[i] << endl;
+                    }//Close else if 
+
                     else {
                         contador++;
-                        OE[i] =  OE[i] + to_string(contador) + " + ";
+                        OE[i] = OE[i] + to_string(contador) + " + ";
+                        //cout << OE[i] << endl;
                     }//Close else 
                 }//Close else if
 
                 contador = 0;
             }//Close while
 
-            contador = 0;
             thereIsPol = false;
+            thereIsPol2 = false;
             increment = false;
+            contador = 0;
         }//Close for
 
         for (int k = 0; k < n; k++){
@@ -231,7 +253,7 @@ class LeerArchivo{
                 //Opening the file again
                 file.open(path, ios::in);
                     
-                list= new string[i];
+                list = new string[i];
 
                 //Saving the text file line by line in an array
                 while (getline(file, str)){
@@ -243,12 +265,12 @@ class LeerArchivo{
                 /*for (int s = 0; s < i; s++){
                     cout << list[s] << endl;
                 }//Close for*/
-                
-                //returning list of strings
-                return list;
 
                 //Closing the file again
                 file.close();
+                
+                //returning list of strings
+                return list;
             }//Close if 
                     
             else{
@@ -261,11 +283,16 @@ class LeerArchivo{
 
 int main(int argc, char * argv[])
 {
+    int i = 0;
     LeerArchivo<char> L;
     Metodos<string> M;
 
-    string *arr = L.leerGuardar(argv[1],argv[argc-1]);
-    M.declaracion(arr);
+    string *arr = L.leerGuardar(argv[1], argv[argc-1]);
+    i = sizeof(arr);
+
+    cout << "El tamaño desde el main es: " << i << endl;
+
+    M.declaracion(arr, i);
 
     return 0; 
 }//Close main

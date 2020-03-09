@@ -1,16 +1,4 @@
-int main ()
-{
-  // declaring variables:
-
-  // process:
-  int a = 5;
-  int b = 2;
-  a = a + 1;
-  int result = a - b;
-
-  // print out the result:
-  cout << result;
-
-  // terminate the program:
-  return 0;
-}
+int a = 5;
+int b = 2;
+a = a + 1;
+int result = a - b;
