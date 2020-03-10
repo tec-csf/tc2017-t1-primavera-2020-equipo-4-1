@@ -12,7 +12,7 @@ matrix:
           packages:
             - g++-17
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=gcc-17 && CXX=g++-17"
 
 script:
 - cd sources/
