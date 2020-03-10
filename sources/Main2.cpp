@@ -326,7 +326,6 @@ class Conversion{
 
                 while(file >> word){
                     if(word.length() == 1 && word !="+"){
-                        cout<<"funciona"<<endl;
                         int num = stoi(word);
                         coef = coef + num;
                         exp = 0;   
