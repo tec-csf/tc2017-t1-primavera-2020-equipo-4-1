@@ -112,6 +112,8 @@ template <class T>
 class Metodos{  
   public:
     Polynomial pol;
+    string OE[100];
+
     //Function to remove all spaces from a given string 
         string removeSpaces(T str){ 
 
@@ -212,7 +214,7 @@ class Metodos{
 
         else {
             str1 = line.at(11);
-            total = str1 + " + " + to_string(1);
+            total = str1 + "+" + to_string(1);
         }//Close else 
 
         return total;
@@ -220,7 +222,6 @@ class Metodos{
 
     string* declaracion(T *arr, int n){ 
         int contador = 0;
-        string OE[n];
         string line;
         string word;
         string pol;
@@ -339,7 +340,7 @@ class Conversion{
                 while(file >> word){
                     if(word.length() == 1 && word !="+"){
                         int num = stoi(word);
-                        coef = coef + num;
+                        coef = num;
                         exp = 0;   
                         polis.push_back(new Polynomial(coef,exp));  
                     }else{
@@ -498,13 +499,14 @@ int main(int argc, char * argv[])
 {
     int i = 0;
     LeerArchivo<char> L;
-    Metodos<string> M;
 
     string *arr = L.leerGuardar(argv[1], argv[argc-1]);
     i = L.i;
 
-    string *pol  = M.declaracion(arr, i);
+     Metodos<string> M;
 
+    string *pol  = M.declaracion(arr, i);
+    
     Conversion C;
 
     C.calculo(pol,i);
