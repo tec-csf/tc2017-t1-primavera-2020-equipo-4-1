@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <iomanip>  
 
 using namespace std; 
 
@@ -548,12 +549,11 @@ class LeerArchivo{
         void tabla(string *lineaCodigo, int size, int *operaciones){
             string tabla[4][i];
 
-            cout<<"\nNo. de linea\tCódigo\t\t\t\t\t\t\tOE\tPolinomio"<<endl;;
+            printf("%-20s%-60s%-10s%-10s\n", "No. de linea", "Código", "OE", "Polinomio"); 
 
             for (int ty = 0; ty < i; ty++)
             {
-
-                    cout<<ty+1<<"\t\t"<<lineaCodigo[ty]<<"\t\t\t\t\t\t\t\t\t"<<operaciones[ty];
+                    printf("%-20i%-60s%-10d%-10s\n", ty+1,lineaCodigo[ty].c_str(),operaciones[ty], ""); 
                 
                 cout<<endl;
             }
