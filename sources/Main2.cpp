@@ -7,6 +7,11 @@
 
 using namespace std; 
 
+/**
+ * Creates Polynomials to use for arithmetic operationsa
+ * 
+ *
+ */
 class Polynomial
 {
 //define private member functions
@@ -83,7 +88,12 @@ public:
          }
       }
    }
-    
+    /**
+     * Sums the Polynomial.
+     *
+     * @param Receives Polynomial.
+     * @return new Polynomial.
+     */
    Polynomial plus ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -93,6 +103,12 @@ public:
       c.deg = c.degree();
       return c;
    }
+    /**
+     * Substract the Polynomial.
+     *
+     * @param Receives Polynomial.
+     * @return new Polynomial.
+     */
    Polynomial minus ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -102,6 +118,12 @@ public:
       c.deg = c.degree();
       return c;
    }
+    /**
+     * Multiplies the Polynomial.
+     *
+     * @param Receives Polynomial.
+     * @return new Polynomial.
+     */
    Polynomial times ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -332,13 +354,23 @@ class Metodos{
                   
 };//Close Metodos
 
+/**
+ * Converts the interpretation of the algorythm to Polynomials, gives
+ *      the resulting Polynomial and the complexity
+ *
+ */
 class Conversion{
     public:
         //Variables to convert for Polynomial class
         vector<Polynomial*> polis;
         string separaciones;
         int index=0;
-    
+        /**
+         * Calculates the Polynomial via the string Algorythm.
+         *
+         * @param Receives string[] and size of string[].
+         * @return The total Polynomial.
+         */
         void calculo(string *pol, int size){
             int coef = 0;
             int exp = 0;
@@ -372,7 +404,6 @@ class Conversion{
                                         word+=index +"(";
                                         index++;
                                         
-
                                     }
 
                                     if (j == 2 && word.length() == 6)
@@ -445,15 +476,19 @@ class Conversion{
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
-            vec.push;
+            //vec.push;
             x++;
-        }
-
-         
+            }
+        }    
     }    
 };
        
-
+/**
+ * Reads and Writes the text of algoryth into an array
+ *
+ *
+ * @tparam T the type of data for arrays
+ */
 //Creating a template class
 template <class T> 
 class LeerArchivo{
@@ -462,7 +497,13 @@ class LeerArchivo{
         int a = 0;
         int s = 0;
         string* list;
-        
+        /**
+         * Reads and saves the file.
+         *
+         * @param Receives the parameters from the command window
+         * (argv1[] is for the flag and argv1[] is for the route of the file).
+         * @return new Polynomial.
+         */
         //Input of the file for reading
         string * leerGuardar(T argv1[], T argv2[]){
             a=0;
@@ -505,6 +546,12 @@ class LeerArchivo{
 
             return list;
         }//Close leerGuardar
+        /**
+         * Prints the table of results.
+         *
+         * @param An array (the results) and an int (size of array)
+         * @return a print of the table for the terminal.
+         */
         string * editar(string *arr, int i){
             int counter = 0;
             string str = " ";
