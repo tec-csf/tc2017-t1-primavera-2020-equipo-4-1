@@ -44,8 +44,7 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 
 ### 2.1 Pasos a seguir para utilizar la aplicación
 
-*[Incluya aquí una guía paso a paso para poder utilizar la aplicación, desde la clonación del repositorio, la compilación del código hasta la ejecución de los ejemplos para visualizar los resultados.]*
-
+*
 1.- Abrir la terminal.
 
 2.- Acceder al directorio donde vas a clonar el repositorio. Ej: cd desktop.
@@ -61,6 +60,7 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 7.- El siguiente paso, para poder correrlo, es ingresar el siguiente comando: "./Main -i " seguido por el path del archivo que quieres leer. 
 Un ejemplo de path es el siguiente: "/Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt". 
 El comando final para correr la aplicación es "./Main -i /Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt".
+*
 
 ## 3. Referencias
 
