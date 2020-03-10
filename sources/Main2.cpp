@@ -18,6 +18,12 @@ private:
    int deg;        // degree of polynomial (0 for the zero polynomial)
 //define public member functions
 public:
+    /**
+     * Convert integers into Polynomials.
+     *
+     * @param non.
+     * @return default Polynomial.
+     */
    Polynomial() //default constructor
    {
       for ( int i = 0; i < 100; i++ )
@@ -25,7 +31,12 @@ public:
          coef[i] = 0;
       }
    }
-
+    /**
+     * Convert integers into Polynomials.
+     *
+     * @param Receives two integers.
+     * @return Polynomial.
+     */
     Polynomial(int a, int b) //default constructor
    {
       for ( int i = 0; i < 100; i++ )
@@ -34,13 +45,23 @@ public:
       }
       this->set(a,b);
    }
-
+    /**
+     * Convert integers into Polynomials.
+     *
+     * @param Receives two integers.
+     * @return Polynomial.
+     */
    void set ( int a , int b ) //setter function
    {
       //coef = new Polynomial[b+1];
       coef[b] = a;
       deg = degree();
    }
+    /**
+     * Finds the degree of the Polynomial.
+     *
+     * @relatesalso set
+     */
    int degree()
    {
       int d = 0;
@@ -48,6 +69,12 @@ public:
          if ( coef[i] != 0 ) d = i;
       return d;
    }
+    /**
+     * Prints Polynomials.
+     *
+     * @param none.
+     * @return Polynomial.
+     */
    void print()
    {
       for ( int i = 99; i >= 0; i-- ) {
@@ -56,28 +83,7 @@ public:
          }
       }
    }
-   // use Horner's method to compute and return the polynomial evaluated at x
-   int evaluate ( int x )
-   {
-      int p = 0;
-      for ( int i = deg; i >= 0; i-- )
-         p = coef[i] + ( x * p );
-      return p;
-   }
-   // differentiate this polynomial and return it
-   Polynomial differentiate()
-   {
-      if ( deg == 0 )  {
-         Polynomial t;
-         t.set ( 0, 0 );
-         return t;
-      }
-      Polynomial deriv;// = new Polynomial ( 0, deg - 1 );
-      deriv.deg = deg - 1;
-      for ( int i = 0; i < deg; i++ )
-         deriv.coef[i] = ( i + 1 ) * coef[i + 1];
-      return deriv;
-   }
+    
    Polynomial plus ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -330,7 +336,7 @@ class Conversion{
     public:
         //Variables to convert for Polynomial class
         vector<Polynomial*> polis;
-        String separaciones;
+        string separaciones;
         int index=0;
     
         void calculo(string *pol, int size){
@@ -349,7 +355,7 @@ class Conversion{
                         coef = num;
                         exp = 0;   
                         polis.push_back(new Polynomial(coef,exp));
-                        word+="+"to_String(index);
+                        word+="+" + to_string(index);
                         index++;
                                              
                     }else{
@@ -427,7 +433,7 @@ class Conversion{
                                 }
                                 
                             }
-                            word+=")" 
+                            word+=")" ;
                         }
                     }
                 }
@@ -439,7 +445,7 @@ class Conversion{
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
-            vec.push
+            vec.push;
             x++;
         }
 
