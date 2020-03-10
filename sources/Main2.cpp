@@ -112,7 +112,11 @@ template <class T>
 class Metodos{  
   public:
     Polynomial pol;
-    string OE[100];
+    string *OE;
+
+    Metodos(int size){
+        OE=new string[size]();
+    }
 
     //Function to remove all spaces from a given string 
         string removeSpaces(T str){ 
@@ -326,6 +330,8 @@ class Conversion{
     public:
         //Variables to convert for Polynomial class
         vector<Polynomial*> polis;
+        String separaciones;
+        int index=0;
     
         void calculo(string *pol, int size){
             int coef = 0;
@@ -342,7 +348,10 @@ class Conversion{
                         int num = stoi(word);
                         coef = num;
                         exp = 0;   
-                        polis.push_back(new Polynomial(coef,exp));  
+                        polis.push_back(new Polynomial(coef,exp));
+                        word+="+"to_String(index);
+                        index++;
+                                             
                     }else{
                         if (word.length() > 1){{
                             for (int j = 0; j < word.length(); j++)
@@ -354,8 +363,9 @@ class Conversion{
                                         coef = mul;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
-
-                                    }else if(j == 0 && word.length() == 5){
+                                        word+=index +"(";
+                                        index++;
+                                        
 
                                     }
 
@@ -364,11 +374,8 @@ class Conversion{
                                         exp = 1;
                                         coef = 1;
                                         polis.push_back(new Polynomial(coef,exp));
+                                        
 
-                                    }else if(j == 1 && word.length() == 5){
-                                        exp = 1;
-                                        coef = 1;
-                                        polis.push_back(new Polynomial(coef,exp));
                                     }
 
                                     if (j == 4 && word.length() == 6)
@@ -378,11 +385,6 @@ class Conversion{
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
 
-                                    }else if(j == 3 && word.length() == 5){
-                                        int num = word[3] - a;
-                                        coef = num;
-                                        exp = 0;
-                                        polis.push_back(new Polynomial(coef,exp));
                                     }
                                 }else{
                                      if (j == 0 && word.length() == 7)
@@ -392,9 +394,10 @@ class Conversion{
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
 
-                                    }else if(j == 0 && word.length() == 6){
+                                    /*if(j == 0 && word.length() == 6){
 
                                     }
+                                    */
 
                                     if (j == 2 && word.length() == 7)
                                     {
@@ -423,7 +426,8 @@ class Conversion{
                                     }else{}
                                 }
                                 
-                            } 
+                            }
+                            word+=")" 
                         }
                     }
                 }
@@ -435,8 +439,10 @@ class Conversion{
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
+            vec.push
             x++;
-        } 
+        }
+
          
     }    
 };
@@ -493,11 +499,11 @@ class LeerArchivo{
 
             return list;
         }//Close leerGuardar
-        string * editar(string *arr){
+        string * editar(string *arr, int i){
             int counter = 0;
             string str = " ";
             int z = 0;
-            for (int u = 0; u < sizeof(arr); u++){
+            for (int u = 0; u < i; u++){
                 str = arr[u];
                 while(z < str.length()){
                 if (str[z] == ' '){
@@ -515,12 +521,12 @@ class LeerArchivo{
             return arr;
         }//Close editar
 
-        void tabla(string *lineaCodigo){
-            string tabla[4][sizeof(lineaCodigo)];
+        void tabla(string *lineaCodigo, int size){
+            string tabla[4][i];
 
             cout<<"\nNo. de linea\tCódigo\t\t\t\t\t\t\tOE\tPolinomio"<<endl;;
 
-            for (int ty = 0; ty < sizeof(lineaCodigo); ty++)
+            for (int ty = 0; ty < i; ty++)
             {
 
                     cout<<ty+1<<"\t\t"<<lineaCodigo[ty]<<"\t\t\t\t";
@@ -538,7 +544,7 @@ int main(int argc, char * argv[])
     string *arr = L.leerGuardar(argv[1], argv[argc-1]);
     i = L.i;
 
-     Metodos<string> M;
+     Metodos<string> M(i);
 
     string *pol  = M.declaracion(arr, i);
     
@@ -546,9 +552,10 @@ int main(int argc, char * argv[])
 
     C.calculo(pol,i);
 
-    arr = L.editar(arr);
+    
+    arr = L.editar(arr,i);
 
-    L.tabla(arr);
+    L.tabla(arr,i);
     
 
 
