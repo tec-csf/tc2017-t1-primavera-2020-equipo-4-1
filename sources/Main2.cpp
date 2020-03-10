@@ -7,11 +7,6 @@
 
 using namespace std; 
 
-/**
- * Creates Polynomials to use for arithmetic operationsa
- * 
- *
- */
 class Polynomial
 {
 //define private member functions
@@ -88,12 +83,7 @@ public:
          }
       }
    }
-    /**
-     * Sums the Polynomial.
-     *
-     * @param Receives Polynomial.
-     * @return new Polynomial.
-     */
+    
    Polynomial plus ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -103,12 +93,6 @@ public:
       c.deg = c.degree();
       return c;
    }
-    /**
-     * Substract the Polynomial.
-     *
-     * @param Receives Polynomial.
-     * @return new Polynomial.
-     */
    Polynomial minus ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -118,12 +102,6 @@ public:
       c.deg = c.degree();
       return c;
    }
-    /**
-     * Multiplies the Polynomial.
-     *
-     * @param Receives Polynomial.
-     * @return new Polynomial.
-     */
    Polynomial times ( Polynomial b )
    {
       Polynomial a = *this; //a is the poly on the L.H.S
@@ -141,9 +119,11 @@ class Metodos{
   public:
     Polynomial pol;
     string *OE;
+    int *opEl;
 
     Metodos(int size){
         OE=new string[size]();
+        opEl=new int[size]();
     }
 
     //Function to remove all spaces from a given string 
@@ -152,6 +132,14 @@ class Metodos{
         str.erase(remove(str.begin(), str.end(), ' '), str.end()); 
         return str; 
     }//Close removeSpaces
+
+    int * numberOfOE(){
+        /*for(int i = 0; i<6;i++)
+        {
+            cout << OE[i]<<endl;
+        }*/
+        return opEl;
+    }
 
     string calcFor(T line, bool increment){
         string str1;
@@ -254,6 +242,7 @@ class Metodos{
 
     string* declaracion(T *arr, int n){ 
         int contador = 0;
+        int contadorOE = 0;
         string line;
         string word;
         string pol;
@@ -298,18 +287,21 @@ class Metodos{
                             if (((word[j] == '+' && word[j + 1] == '+') || (word[j] == '-' && word[j + 1] == '-')) 
                             && (thereIsPol == true)){
                                 contador++;
+                                contadorOE++;
                                 OE[i] = OE[i] + to_string(contador) + "(" + pol2 + ") + (" + pol2 + ")[";
                                 contador = 0;
                             }//Close if
 
                             else {
                                 contador++;
+                                contadorOE++;
                                 OE[i] = OE[i] + to_string(contador) + " + ";
                                 contador = 0;
                             }//Close else 
                         }//Close if 
 
                         if ((word[j] == '+' && word[j + 1] == '=') || (word[j] == '-' && word[j + 1] == '=')){
+                            contadorOE = contadorOE + 2;
                             contador = contador + 2;
                             OE[i] = OE[i] + to_string(contador) + " + ";
                         }//Close if
@@ -320,29 +312,33 @@ class Metodos{
                 word == "/" || word == "-"){
                     if ((word == "<" || word == ">") && (thereIsPol == true)){
                         contador++;
+                        contadorOE++;
                         OE[i] = OE[i] + to_string(contador) + "(" + pol + ") + ";
                     }//Close if
 
                     else if ((word == "<" || word == ">") && (thereIsPol2 == true)){
                         contador++;
+                        contadorOE++;
                         OE[i] = OE[i] + to_string(contador) + "(" + pol3 + ") + (" + pol4 + ")[";
                         
                     }//Close else if 
 
                     else {
                         contador++;
+                        contadorOE++;
                         OE[i] = OE[i] + to_string(contador) + " + ";
                     }//Close else 
                 }//Close else if
 
                 contador = 0;
             }//Close while
-
+            opEl[i]=contadorOE;
             thereIsPol = false;
             thereIsPol2 = false;
             increment = false;
             increment2 = false;
             contador = 0;
+            contadorOE = 0;
         }//Close for
 
         for (int k = 0; k < n; k++){
@@ -354,23 +350,13 @@ class Metodos{
                   
 };//Close Metodos
 
-/**
- * Converts the interpretation of the algorythm to Polynomials, gives
- *      the resulting Polynomial and the complexity
- *
- */
 class Conversion{
     public:
         //Variables to convert for Polynomial class
         vector<Polynomial*> polis;
         string separaciones;
         int index=0;
-        /**
-         * Calculates the Polynomial via the string Algorythm.
-         *
-         * @param Receives string[] and size of string[].
-         * @return The total Polynomial.
-         */
+    
         void calculo(string *pol, int size){
             int coef = 0;
             int exp = 0;
@@ -404,6 +390,7 @@ class Conversion{
                                         word+=index +"(";
                                         index++;
                                         
+
                                     }
 
                                     if (j == 2 && word.length() == 6)
@@ -476,19 +463,15 @@ class Conversion{
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
-            //vec.push;
+           // vec.push;
             x++;
-            }
-        }    
+        }
+
+    }
     }    
 };
        
-/**
- * Reads and Writes the text of algoryth into an array
- *
- *
- * @tparam T the type of data for arrays
- */
+
 //Creating a template class
 template <class T> 
 class LeerArchivo{
@@ -497,13 +480,7 @@ class LeerArchivo{
         int a = 0;
         int s = 0;
         string* list;
-        /**
-         * Reads and saves the file.
-         *
-         * @param Receives the parameters from the command window
-         * (argv1[] is for the flag and argv1[] is for the route of the file).
-         * @return new Polynomial.
-         */
+        
         //Input of the file for reading
         string * leerGuardar(T argv1[], T argv2[]){
             a=0;
@@ -546,12 +523,6 @@ class LeerArchivo{
 
             return list;
         }//Close leerGuardar
-        /**
-         * Prints the table of results.
-         *
-         * @param An array (the results) and an int (size of array)
-         * @return a print of the table for the terminal.
-         */
         string * editar(string *arr, int i){
             int counter = 0;
             string str = " ";
@@ -574,7 +545,7 @@ class LeerArchivo{
             return arr;
         }//Close editar
 
-        void tabla(string *lineaCodigo, int size){
+        void tabla(string *lineaCodigo, int size, int *operaciones){
             string tabla[4][i];
 
             cout<<"\nNo. de linea\tCódigo\t\t\t\t\t\t\tOE\tPolinomio"<<endl;;
@@ -582,7 +553,7 @@ class LeerArchivo{
             for (int ty = 0; ty < i; ty++)
             {
 
-                    cout<<ty+1<<"\t\t"<<lineaCodigo[ty]<<"\t\t\t\t";
+                    cout<<ty+1<<"\t\t"<<lineaCodigo[ty]<<"\t\t\t\t\t\t\t\t\t"<<operaciones[ty];
                 
                 cout<<endl;
             }
@@ -601,14 +572,16 @@ int main(int argc, char * argv[])
 
     string *pol  = M.declaracion(arr, i);
     
-    Conversion C;
+    int *operaciones = M.numberOfOE();
 
-    C.calculo(pol,i);
+    /*Conversion C;
+
+    C.calculo(pol,i);*/
 
     
     arr = L.editar(arr,i);
 
-    L.tabla(arr,i);
+    L.tabla(arr,i,operaciones);
     
 
 
