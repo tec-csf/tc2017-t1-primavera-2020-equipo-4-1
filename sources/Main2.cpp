@@ -330,11 +330,11 @@ class Conversion{
             int coef = 0;
             int exp = 0;
             char a = '0';
+            string word;
             for (int i = 0; i < size; i++)
             {
                 string line = pol[i];
                 stringstream file(line);
-                string word;
 
                 while(file >> word){
                     if(word.length() == 1 && word !="+"){
