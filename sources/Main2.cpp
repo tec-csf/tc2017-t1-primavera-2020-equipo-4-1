@@ -390,8 +390,6 @@ class Conversion{
                                         polis.push_back(new Polynomial(coef,exp));
                                         word+=index +"(";
                                         index++;
-                                        
-
                                     }
 
                                     if (j == 2 && word.length() == 6)
@@ -412,43 +410,18 @@ class Conversion{
 
                                     }
                                 }else{
-                                     if (j == 0 && word.length() == 7)
-                                    {
-                                        int mul = word[0] - a;
-                                        coef = mul;
-                                        exp = 0;
-                                        polis.push_back(new Polynomial(coef,exp));
-
-                                    /*if(j == 0 && word.length() == 6){
-
-                                    }
-                                    */
-
-                                    if (j == 2 && word.length() == 7)
-                                    {
-                                        exp = 1;
-                                        coef = 1;
-                                        polis.push_back(new Polynomial(coef,exp));
-
-                                    }else if(j == 1 && word.length() == 6){
+                                    if(j == 1 && word.length() == 6){
                                         exp = 1;
                                         coef = 1;
                                         polis.push_back(new Polynomial(coef,exp));
                                     }
 
-                                    if (j == 4 && word.length() == 7)
-                                    {
-                                        int num = word[4] - a;
-                                        coef = num;
-                                        exp = 0;
-                                        polis.push_back(new Polynomial(coef,exp));
-
-                                    }else if(j == 3 && word.length() == 6){
+                                    if(j == 3 && word.length() == 6){
                                         int num = word[3] - a;
                                         coef = num;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
-                                    }else{}
+                                    }
                                 }
                                 
                             }
@@ -468,8 +441,7 @@ class Conversion{
             x++;
         }
 
-    }
-    }    
+    }   
 };
        
 
