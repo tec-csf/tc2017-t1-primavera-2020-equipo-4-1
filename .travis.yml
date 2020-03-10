@@ -10,9 +10,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-17
+            - g++-7
       env:
-        - MATRIX_EVAL="CC=gcc-17 && CXX=g++-17"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 script:
 - cd sources/
