@@ -521,6 +521,12 @@ class LeerArchivo{
         void tabla(string *lineaCodigo, int size, int *operaciones, string *polinomios){
             string tabla[4][i];
 
+                        for (int j = 0; j < 120; j++)
+            {
+                cout<<"-";
+            }
+            cout<<"\n"<<endl;
+            
             printf("%-20s%-60s%-10s%-10s\n", "No. de linea", "Código", "OE", "Polinomio"); 
 
             for (int ty = 0; ty < i; ty++)
@@ -529,6 +535,17 @@ class LeerArchivo{
                 
                 cout<<endl;
             }
+
+            for (int j = 0; j < 120; j++)
+            {
+                cout<<"-";
+            }
+
+            cout<<"\n"<<endl;
+            cout<<"T(n) = "<<endl;
+            cout<<"\n"<<endl;
+            cout<<"O("<< " "<< ")"<<endl;
+            cout<<"\n"<<endl;
         }//Close editar
 };//Close leerArchivo
 
