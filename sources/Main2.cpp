@@ -34,6 +34,7 @@ public:
       }
       this->set(a,b);
    }
+
    void set ( int a , int b ) //setter function
    {
       //coef = new Polynomial[b+1];
@@ -106,8 +107,6 @@ public:
       return c;
    }
 };
-
-
 
 template <class T> 
 class Metodos{  
@@ -201,13 +200,20 @@ class Metodos{
         return total;
     }//Close calcFor
 
-    string calcWhile(T line){
+    string calcWhile(T line, bool increment2){
         string str1;
         string str2;
         string total;
 
-        str1 = line.at(11);
-        total = str1 + " + " + to_string(1);
+        if (increment2 == true){
+            str2 = line.at(11);
+            total = str2;
+        }//Close if 
+
+        else {
+            str1 = line.at(11);
+            total = str1 + " + " + to_string(1);
+        }//Close else 
 
         return total;
     }//Close calcWhile
@@ -220,9 +226,11 @@ class Metodos{
         string pol;
         string pol2;
         string pol3;
+        string pol4;
         bool thereIsPol = false;
         bool thereIsPol2 = false;
         bool increment = false;
+        bool increment2 = false;
 
         for (int i = 0; i < n; i++){
             line = arr[i];
@@ -243,9 +251,11 @@ class Metodos{
                     }//Close else if 
 
                     else if (word == "while"){
-                        pol3 = calcWhile(line);
+                        increment2 = false;
+                        pol3 = calcWhile(line, increment2);
+                        increment2 = true;
+                        pol4 = calcWhile(line, increment2);
                         thereIsPol2 = true;
-                        cout << pol3 << endl;
                     }//Close else if 
 
                     for (int j = 0; j < word.length(); j++){
@@ -282,7 +292,7 @@ class Metodos{
 
                     else if ((word == "<" || word == ">") && (thereIsPol2 == true)){
                         contador++;
-                        OE[i] = OE[i] + to_string(contador) + "(" + pol3 + ") + ";
+                        OE[i] = OE[i] + to_string(contador) + "(" + pol3 + ") + (" + pol4 + ")[";
                         
                     }//Close else if 
 
@@ -298,12 +308,14 @@ class Metodos{
             thereIsPol = false;
             thereIsPol2 = false;
             increment = false;
+            increment2 = false;
             contador = 0;
         }//Close for
 
         for (int k = 0; k < n; k++){
             cout << OE[k] << endl;
         }//Close for 
+
         return OE;
     }//Close declaracion 
                   
