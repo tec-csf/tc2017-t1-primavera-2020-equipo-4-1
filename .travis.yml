@@ -1,25 +1,12 @@
 language: cpp
 
 compiler: gcc
-matrix:
-  include:
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+
+dist: bionic
 
 script:
 - cd sources/
 - g++ Main2.cpp -o Main2
 - ./Main2 -i example1.txt 
-before_install:
-  - eval "${MATRIX_EVAL}"
-  - sudo apt-get -y install libxml2-dev
 
 
