@@ -374,11 +374,11 @@ class Conversion{
                         coef = num;
                         exp = 0;   
                         polis.push_back(new Polynomial(coef,exp));
-                        word+="+" + to_string(index);
+                        separaciones+="+" + to_string(index);
                         index++;
                                              
                     }else{
-                        if (word.length() > 1){{
+                        if (word.length() > 1){
                             for (int j = 0; j < word.length(); j++)
                             {
                                 if(word[5]!='['){
@@ -388,7 +388,7 @@ class Conversion{
                                         coef = mul;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
-                                        word+=index +"(";
+                                        separaciones+= "+" + to_string(index) +"(";
                                         index++;
                                     }
 
@@ -397,8 +397,8 @@ class Conversion{
                                         exp = 1;
                                         coef = 1;
                                         polis.push_back(new Polynomial(coef,exp));
-                                        
-
+                                        separaciones+=to_string(index) + "+";
+                                        index++;
                                     }
 
                                     if (j == 4 && word.length() == 6)
@@ -407,6 +407,8 @@ class Conversion{
                                         coef = num;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
+                                        separaciones+=to_string(index);
+                                        index++;
 
                                     }
                                 }else{
@@ -414,6 +416,8 @@ class Conversion{
                                         exp = 1;
                                         coef = 1;
                                         polis.push_back(new Polynomial(coef,exp));
+                                        separaciones+= to_string(index) + "+" ;
+                                        index++;
                                     }
 
                                     if(j == 3 && word.length() == 6){
@@ -421,25 +425,35 @@ class Conversion{
                                         coef = num;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
+                                        separaciones+= "+" + to_string(index) ;
+                                        index++;
+                                    }
+                                    if(j == 5 && word.length() == 6){
+                                        separaciones+= to_string(index) + "[" ;
+                                        index++;
                                     }
                                 }
                                 
                             }
-                            word+=")" ;
+                            separaciones+= to_string(index) + ")" ;
+                            index++;
+                            
                         }
+                        
                     }
+                    cout<<separaciones<<endl;
+                   
                 }
-
+                    
             }
             
-        }
-        int x = 0;
+        /*int x = 0;
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
-           // vec.push;
             x++;
-        }
+        }*/
+
 
     }   
 };
@@ -526,7 +540,7 @@ class LeerArchivo{
                 cout<<"-";
             }
             cout<<"\n"<<endl;
-            
+
             printf("%-20s%-60s%-10s%-10s\n", "No. de linea", "Código", "OE", "Polinomio"); 
 
             for (int ty = 0; ty < i; ty++)
@@ -563,9 +577,9 @@ int main(int argc, char * argv[])
     
     int *operaciones = M.numberOfOE();
 
-    /*Conversion C;
+    Conversion C;
 
-    C.calculo(pol,i);*/
+    C.calculo(pol,i);
 
     
     arr = L.editar(arr,i);
