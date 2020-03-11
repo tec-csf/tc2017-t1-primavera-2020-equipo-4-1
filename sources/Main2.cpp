@@ -133,8 +133,8 @@ class Metodos{
      * @param[in] size the size that will be given to the OE array.
     */
     Metodos(int size){
-        OE=new string[size]();
-        opEl=new int[size]();
+        OE = new string[size]();
+        opEl = new int[size]();
     }//Close method
 
     /**
@@ -149,20 +149,33 @@ class Metodos{
         return str; 
     }//Close removeSpaces
 
+    /**
+     * Calculates the size of the array that hold the elemental operations
+     *      and returns the size.
+     * 
+     * @returns the size of the array.
+    */
     int * numberOfOE(){
         /*for(int i = 0; i<6;i++)
         {
             cout << OE[i]<<endl;
-        }*/
+        }//Close for*/
+
         return opEl;
-    }
+    }//Close numberOfOE
 
     /**
      * Calculates how many times the contents of a for loop will repeat, including its 
-     *      comparison and increment, but excluding the first intialized variable when 
+     *      comparison and increment, but excluding the first initialized variable when 
      *      declaring the loop.
      * 
-     * @param[in] 
+     * @param[in] line the certain line that contains the declaration/initialization of
+     *      a for loop.
+     * @param[in] increment a boolean variable that tells wether the analysis of the 
+     *      repetition of the loop will focus around the comparison (i < n) or the
+     *      increment (i++).
+     * @returns how many times the loop will repeat (with focus on the comparison or
+     *          increment) expressed in a polynomial, which is saved as a string.
     */
     string calcFor(T line, bool increment){
         string str1;
@@ -245,6 +258,18 @@ class Metodos{
         return total;
     }//Close calcFor
 
+    /**
+     * Calculates how many times the contents of a while loop will repeat.
+     * 
+     * @param[in] line the certain line that contains the declaration/initialization of
+     *      a while loop-
+     * @param[in] increment2 a boolean variable that tells wether the analysis of the 
+     *      repetition of the loop will focus around the comparison (i < n) or just how 
+     *      much it will repeat without the extra time to get out of the loop.
+     * @returns how many times the loop will repeat (with focus on the comparison or 
+     *      how many times it repeats without the extra time) expressed in a polynomial,
+     *      which is saved as a string.
+    */
     string calcWhile(T line, bool increment2){
         string str1;
         string str2;
@@ -263,6 +288,16 @@ class Metodos{
         return total;
     }//Close calcWhile
 
+    /**
+     * Analyzes the algorithm line by line and counts all the elemental operations present,
+     *      it also calls on calcFor() and calcWhile() for further analysis on for and 
+     *      while loops.
+     * 
+     * @param[in] arr the array that holds all the input code line by line, unmodified.
+     * @param[in] n the size of the array.
+     * @returns a new array that holds all the elemental operations of the algorithm per 
+     *      line. 
+    */
     string* declaracion(T *arr, int n){ 
         int contador = 0;
         int contadorOE = 0;
@@ -355,6 +390,7 @@ class Metodos{
 
                 contador = 0;
             }//Close while
+
             opEl[i]=contadorOE;
             thereIsPol = false;
             thereIsPol2 = false;
@@ -369,8 +405,7 @@ class Metodos{
         }//Close for 
 
         return OE;
-    }//Close declaracion 
-                  
+    }//Close declaracion             
 };//Close Metodos
 
 class Conversion{
