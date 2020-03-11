@@ -54,7 +54,7 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 
 *5.- Una vez que estés dentro de la carpeta del repositorio tendras que acceder a la carpeta de sources con el siguente comando: "cd sources".*
 
-*6.- Para poder utilizar el programa primero deberas compilar con el siguiente comando: "g++ Main.cpp -o Main".*
+*6.- Para poder utilizar el programa primero deberas compilar con el siguiente comando: "g++ Main2.cpp -o Main2".*
 
 *7.- El siguiente paso, para poder correrlo, es ingresar el siguiente comando: "./Main -i " seguido por el path del archivo que quieres leer. Un ejemplo de path es el siguiente: "/Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt". 
 El comando final para correr la aplicación es "./Main -i /Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt".*
