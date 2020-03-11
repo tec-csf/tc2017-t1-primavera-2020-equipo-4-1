@@ -521,7 +521,8 @@ class Conversion{
         /*cout<<"\n"<<"Final"<<endl;
         polis[31]->print();
         */
-        int iterations=separaciones.length()-1;
+
+       /* int iterations=separaciones.length()-1;
         for (int i = iterations ; i > 0; i--)
             { 
                 if (separaciones.at(i)!='('||separaciones.at(i)!='+'||separaciones.at(i)!=')'){
@@ -536,21 +537,21 @@ class Conversion{
                             //cout<<"hola"<<endl;
                             //temporal=temporal.plus(polis[indS]);
                         }
-                        else if(separaciones.at(i-2=='+')){
+                        else if(separaciones.at(i-2 == '+')){
                              cout<<"hola"<<endl;
                             int indS=stoi(separaciones.substr((i-2), (i)));
                             int indS2=stoi(separaciones.substr((i-4),(i-3)));
-                            cout<<indS<<"indice uno"<<indS2<<"indice 2"<<endl;
-                            temp=polis[indS];
-                            temporal.plus(temp.plus(*polis[indS2]));
-                            total=total.plus(temporal);
+                            cout<<indS<<"indice uno"<<indS2<<"indice 2"<<endl;                          
+                            temp = *polis[indS];
+                            temporal = temporal.plus(temp.plus(*polis[indS2]));
+                            total = total.plus(temporal);
                             total.print();
-                             cout<<"hola"<<endl;
+                            temporal = total;
                              
                             //temporal=temporal.plus(polis[indS]);
                         //temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-2))]));
                         }
-                    /*if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
+                    if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
                     {
                         if (separaciones.at(i-1)=="(")
                         {
@@ -558,10 +559,10 @@ class Conversion{
                     }
                     else if(separaciones.at(i-2=="("){
                         temporal=polis[stoi(separaciones.at(i))]->times(temporal);
-                    }*/
+                    }
                     }    
                 }    
-            }
+            } */
         }
 };
        
