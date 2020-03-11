@@ -115,21 +115,36 @@ public:
    }
 };
 
+/**
+ * Calculates the elemental operations of an algorithm/piece of 
+ *      code.
+*/
 template <class T> 
 class Metodos{  
   public:
+    //Pol is an object, while OE is an array used for storing elemental operations per line.
     Polynomial pol;
     string *OE;
     int *opEl;
 
+    /**
+     * Assign the correct size to the OE array after initializing it.
+     * 
+     * @param[in] size the size that will be given to the OE array.
+    */
     Metodos(int size){
         OE=new string[size]();
         opEl=new int[size]();
-    }
+    }//Close method
 
-    //Function to remove all spaces from a given string 
-        string removeSpaces(T str){ 
-
+    /**
+     * Removes all the spaces from a given string.
+     * 
+     * @param[in] str the string that will have spaces needing to be erased.
+     * 
+     * @returns the same string but now with the spaces erased.
+    */ 
+    string removeSpaces(T str){ 
         str.erase(remove(str.begin(), str.end(), ' '), str.end()); 
         return str; 
     }//Close removeSpaces
@@ -142,6 +157,13 @@ class Metodos{
         return opEl;
     }
 
+    /**
+     * Calculates how many times the contents of a for loop will repeat, including its 
+     *      comparison and increment, but excluding the first intialized variable when 
+     *      declaring the loop.
+     * 
+     * @param[in] 
+    */
     string calcFor(T line, bool increment){
         string str1;
         string str2;
