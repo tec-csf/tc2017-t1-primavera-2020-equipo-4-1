@@ -379,6 +379,8 @@ class Conversion{
         vector<Polynomial*> polis;
         string separaciones;
         int index=0;
+        Polynomial temporal;
+        Polynomial total;
     
         void calculo(string *pol, int size){
             int coef = 0;
@@ -468,23 +470,50 @@ class Conversion{
                         }
                         
                     }
-                    cout<<separaciones<<endl;
-                   
+                    //cout<<separaciones<<endl;
+
                 }
                     
             }
-            
-        int x = 0;
+        /*int x = 0;
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
             x++;
-        }
-        cout<<"\n"<<endl;
+            
+        }*/
+        /*cout<<"\n"<<"Final"<<endl;
         polis[31]->print();
-
-
-    }   
+        */
+       
+    }
+    int iterations=separaciones.length()-1;
+    for (int i = iterations ; i > 0; i--)
+    {
+        if (separaciones.at(i)!='('||separaciones.at(i)!='+'||separaciones.at(i)!=')')
+        {
+            if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
+            {
+                if (separaciones.at(i-1)=="+")
+                {
+                    temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-1))]));
+                }
+                else if(separaciones.at(i-2=="+"){
+                    temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-2))]));
+                }
+            }
+            /*if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
+            {
+                if (separaciones.at(i-1)=="(")
+                {
+                    temporal=polis[stoi(separaciones.at(i))]->times(temporal);
+                }
+                else if(separaciones.at(i-2=="("){
+                    temporal=polis[stoi(separaciones.at(i))]->times(temporal);
+            }*/        
+        }
+    }
+     
 };
        
 
