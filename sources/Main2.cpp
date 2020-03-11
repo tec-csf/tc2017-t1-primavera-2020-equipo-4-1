@@ -665,6 +665,10 @@ class LeerArchivo{
 
             cout<<"\n"<<endl;
             cout<<"T(n) = "<<endl;
+            for(int z = 0; z < i; z++)
+            {
+                cout<<polinomios[z];
+            }
             cout<<"\n"<<endl;
             cout<<"O("<< " "<< ")"<<endl;
             cout<<"\n"<<endl;
