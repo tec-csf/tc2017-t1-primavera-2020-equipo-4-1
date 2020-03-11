@@ -425,12 +425,16 @@ class Conversion{
 
                                     if (j == 4 && word.length() == 6)
                                     {
-                                        int num = word[4] - a;
-                                        coef = num;
-                                        exp = 0;
-                                        polis.push_back(new Polynomial(coef,exp));
-                                        separaciones+=to_string(index) + ")";
-                                        index++;
+                                        if(word[4] != '0'){
+                                            int num = word[4] - a;
+                                            coef = num;
+                                            exp = 0;
+                                            polis.push_back(new Polynomial(coef,exp));
+                                            separaciones+=to_string(index) + ")";
+                                            index++;
+                                        }else{
+                                            separaciones+= ")";
+                                        }
 
                                     }
                                 }else{
@@ -443,12 +447,16 @@ class Conversion{
                                     }
 
                                     if(j == 3 && word.length() == 6){
-                                        int num = word[3] - a;
-                                        coef = num;
-                                        exp = 0;
-                                        polis.push_back(new Polynomial(coef,exp));
-                                        separaciones+=  "+" + to_string(index) + ")" ;
-                                        index++;
+                                        if(word[3] != '0'){
+                                            int num = word[3] - a;
+                                            coef = num;
+                                            exp = 0;
+                                            polis.push_back(new Polynomial(coef,exp));
+                                            separaciones+=  "+" + to_string(index) + ")" ;
+                                            index++;
+                                        }else{
+                                            separaciones+=  ")" ;
+                                        }
                                     }
                                     if(j == 5 && word.length() == 6){
                                         separaciones+= "(";
@@ -466,12 +474,14 @@ class Conversion{
                     
             }
             
-        /*int x = 0;
+        int x = 0;
          while (!polis.empty()) { 
              polis[x]->print();
             polis.pop_back(); 
             x++;
-        }*/
+        }
+        cout<<"\n"<<endl;
+        polis[31]->print();
 
 
     }   
