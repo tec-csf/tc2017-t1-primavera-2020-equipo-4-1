@@ -7,5 +7,6 @@ dist: bionic
 script:
 - cd sources/
 - g++ Main2.cpp -o Main2
+- ./Main2 -i example1.txt
 
 
