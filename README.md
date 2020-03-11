@@ -45,11 +45,17 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 ### 2.1 Pasos a seguir para utilizar la aplicación
 
 *1.- Abrir la terminal.*
+
 *2.- Acceder al directorio donde vas a clonar el repositorio. Ej: cd desktop.*
+
 *3.- Usar el comando "git clone" seguido del link del repositorio, que es  el siguiente: https://github.com/tec-csf/tc2017-t1-primavera-2020-equipo-4-1 . Quedaria de la siguente manera: "git clone https://github.com/tec-csf/tc2017-t1-primavera-2020-equipo-4-1".*
+
 *4.- Acceder al clon/carpeta del repositorio desde la terminal, el cuál se guardó donde se hizo el "git clone". Ej: "cd tc2017-t1-primavera-2020-equipo-4-1".*
+
 *5.- Una vez que estés dentro de la carpeta del repositorio tendras que acceder a la carpeta de sources con el siguente comando: "cd sources".*
+
 *6.- Para poder utilizar el programa primero deberas compilar con el siguiente comando: "g++ Main.cpp -o Main".*
+
 *7.- El siguiente paso, para poder correrlo, es ingresar el siguiente comando: "./Main -i " seguido por el path del archivo que quieres leer. Un ejemplo de path es el siguiente: "/Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt". 
 El comando final para correr la aplicación es "./Main -i /Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt".*
 
