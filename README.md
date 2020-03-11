@@ -40,7 +40,7 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 
 ## 2. Solución
 
-*[Incluya aquí una explicación de la solución implementada]*
+*Para empezar, se manda a llamar la función "leerGuardar()", donde abre el archivo dado como input y comienza a contar la cantidad de líneas qué hay en el código proporcionado. Tomando en cuenta la suma final, se crea un arreglo básico del tamaño de la cantidad de líneas. Cada línea es guardada en cada espacio/índice del arreglo. Luego, se manda a llamar la función "declaracion()" donde se analiza cada línea palabra por palabra para contar las operaciones elementales, y estas se guardan en un segundo arreglo llamado OE[]. Después se manda a llamar una función llamada "calculo()" donde se va a calcular el polinomio final que representa la complejidad temporal del algoritmo dado. Finalmente, los dos métodos que se llaman desde el "main()" son "editar()" y "tabla()". El primero se encarga de borrar todos los espacios blancos que se presentan antes de alguna declaración por cada linea del algoritmo. La segunda tiene la tarea de presentar toda la información/resultados en una tabla ordenada, y estos incluyen el número de linea, el código que se presenta en cada linea, el número total de operaciones elementales, el polinomio formado por cada linea, y el polinomio final que representa la complejidad temporal del algoritmo.*
 
 ### 2.1 Pasos a seguir para utilizar la aplicación
 
