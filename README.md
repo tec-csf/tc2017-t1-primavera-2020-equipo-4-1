@@ -56,8 +56,8 @@ El proyecto debe seguir la siguiente estructura de carpetas:
 
 *6.- Para poder utilizar el programa primero deberas compilar con el siguiente comando: "g++ Main2.cpp -o Main2".*
 
-*7.- El siguiente paso, para poder correrlo, es ingresar el siguiente comando: "./Main -i " seguido por el path del archivo que quieres leer. Un ejemplo de path es el siguiente: "/Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt". 
-El comando final para correr la aplicación es "./Main -i /Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt".*
+*7.- El siguiente paso, para poder correrlo, es ingresar el siguiente comando: "./Main2 -i " seguido por el path del archivo que quieres leer. Un ejemplo de path es el siguiente: "/Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt". 
+El comando final para correr la aplicación es "./Main2 -i /Users/sebastiangomez/Desktop/tc2017-t1-primavera-2020-equipo-4-1/sources/example1.txt".*
 
 ## 3. Referencias
 
