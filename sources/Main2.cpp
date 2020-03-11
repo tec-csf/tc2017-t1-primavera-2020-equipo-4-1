@@ -416,6 +416,7 @@ class Conversion{
         int index=0;
         Polynomial temporal;
         Polynomial total;
+        Polynomial temp;
     
         void calculo(string *pol, int size){
             int coef = 0;
@@ -520,35 +521,48 @@ class Conversion{
         /*cout<<"\n"<<"Final"<<endl;
         polis[31]->print();
         */
-       
-    }
-    int iterations=separaciones.length()-1;
-    for (int i = iterations ; i > 0; i--)
-    {
-        if (separaciones.at(i)!='('||separaciones.at(i)!='+'||separaciones.at(i)!=')')
-        {
-            if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
-            {
-                if (separaciones.at(i-1)=="+")
-                {
-                    temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-1))]));
-                }
-                else if(separaciones.at(i-2=="+"){
-                    temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-2))]));
-                }
+        int iterations=separaciones.length()-1;
+        for (int i = iterations ; i > 0; i--)
+            { 
+                if (separaciones.at(i)!='('||separaciones.at(i)!='+'||separaciones.at(i)!=')'){
+                     cout<<"hola"<<endl;
+                    if (separaciones.at(i-1)=='+'||separaciones.at(i-2=='+')){
+                         cout<<"hola"<<endl;
+                        if (separaciones.at(i-1)=='+'){
+                             //cout<<"hola"<<endl;
+                            int indS=separaciones.at(i-1)-a;
+                            Polynomial temp= *polis[indS];
+                            temporal=temporal.plus(temp.plus(*polis[indS]));
+                            //cout<<"hola"<<endl;
+                            //temporal=temporal.plus(polis[indS]);
+                        }
+                        else if(separaciones.at(i-2=='+')){
+                             cout<<"hola"<<endl;
+                            int indS=stoi(separaciones.substr((i-2), (i)));
+                            int indS2=stoi(separaciones.substr((i-4),(i-3)));
+                            cout<<indS<<"indice uno"<<indS2<<"indice 2"<<endl;
+                            temp=polis[indS];
+                            temporal.plus(temp.plus(*polis[indS2]));
+                            total=total.plus(temporal);
+                            total.print();
+                             cout<<"hola"<<endl;
+                             
+                            //temporal=temporal.plus(polis[indS]);
+                        //temporal=temporal.plus(polis[stoi(separaciones.at(i))]->plus(polis[stoi(separaciones.at(i-2))]));
+                        }
+                    /*if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
+                    {
+                        if (separaciones.at(i-1)=="(")
+                        {
+                        temporal=polis[stoi(separaciones.at(i))]->times(temporal);
+                    }
+                    else if(separaciones.at(i-2=="("){
+                        temporal=polis[stoi(separaciones.at(i))]->times(temporal);
+                    }*/
+                    }    
+                }    
             }
-            /*if (separaciones.at(i-1)=="+"||separaciones.at(i-2=="+")
-            {
-                if (separaciones.at(i-1)=="(")
-                {
-                    temporal=polis[stoi(separaciones.at(i))]->times(temporal);
-                }
-                else if(separaciones.at(i-2=="("){
-                    temporal=polis[stoi(separaciones.at(i))]->times(temporal);
-            }*/        
         }
-    }
-     
 };
        
 
