@@ -429,7 +429,7 @@ class Conversion{
                                         coef = num;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
-                                        separaciones+=to_string(index);
+                                        separaciones+=to_string(index) + ")";
                                         index++;
 
                                     }
@@ -438,7 +438,7 @@ class Conversion{
                                         exp = 1;
                                         coef = 1;
                                         polis.push_back(new Polynomial(coef,exp));
-                                        separaciones+= to_string(index) + "+" ;
+                                        separaciones+= "+ ("  + to_string(index);
                                         index++;
                                     }
 
@@ -447,18 +447,15 @@ class Conversion{
                                         coef = num;
                                         exp = 0;
                                         polis.push_back(new Polynomial(coef,exp));
-                                        separaciones+= "+" + to_string(index) ;
+                                        separaciones+=  "+" + to_string(index) + ")" ;
                                         index++;
                                     }
                                     if(j == 5 && word.length() == 6){
-                                        separaciones+= to_string(index) + "[" ;
-                                        index++;
+                                        separaciones+= "(";
                                     }
                                 }
                                 
                             }
-                            separaciones+= to_string(index) + ")" ;
-                            index++;
                             
                         }
                         
