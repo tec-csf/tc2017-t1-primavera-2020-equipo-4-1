@@ -61,4 +61,8 @@ El comando final para correr la aplicación es "./Main -i /Users/sebastiangomez/
 
 ## 3. Referencias
 
-*Sumador de polinomios: https://www.daniweb.com/programming/software-development/code/217091/simple-polynomial-class*
+*DANIWEB. (2009). Simple Polinomila class. [Online] Recuperado de: https://www.daniweb.com/programming/software-development/code/217091/simple-polynomial-class*
+
+*GeeksforGeeks. (2015). Remove spaces from a given string. [Online]. Recuperado de: https://www.geeksforgeeks.org/remove-spaces-from-a-given-string/*
+
+*GeeksforGeeks. (2019). C++ program to read file word by word. [Online]. Recuperado de: https://www.geeksforgeeks.org/cpp-program-read-file-word-word/*
